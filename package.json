@@ -6,17 +6,16 @@
         "name": "Artem Lytvynov",
         "email": "buntarb@gmail.com"
     },
-    "devDependencies": {
-        "@typescript-eslint/eslint-plugin": "^2.1.0",
-        "@typescript-eslint/parser": "^2.1.0",
-        "typescript": "^3.6.2",
-        "webpack": "^4.39.3",
-        "ts-loader": "^6.0.4",
-        "fork-ts-checker-notifier-webpack-plugin": "^1.0.2",
-        "fork-ts-checker-webpack-plugin": "^1.5.0"
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org/",
+        "access": "public"
     },
-    "dependencies": {
-        "core-js": "^3.2.1",
-        "whatwg-fetch": "^3.0.0"
+    "devDependencies": { },
+    "dependencies": { },
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "scripts": {
+        "build": "echo 'build done'"
     }
 }

@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "10"
+  - "11"
+  - "12"
+cache: npm
+install:
+  - npm i
+script:
+  - npm run build
+deploy:
+  skip_cleanup: true
+  provider: npm
+  email: imazzine.development.kit@gmail.com
+  api_key: $NPM_TOKEN
+  on:
+    tags: true

@@ -15,6 +15,8 @@ You should install `@imazzine/cli` globally to make it works as a common CLI com
 
 ## Design
 
+[![Index schema](/svg/index/index.svg)]
+
 # Opened questions / TODOs
 
 * List of opened questions/todo.

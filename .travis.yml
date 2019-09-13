@@ -15,3 +15,11 @@ deploy:
   api_key: $NPM_TOKEN
   on:
     tags: true
+deploy:
+  skip_cleanup: true
+  provider: pages
+  local_dir: design/svg
+  keep_history: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master

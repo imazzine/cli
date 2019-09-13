@@ -1,0 +1,17 @@
+@startuml nodes_graph
+    title Nodes Graph
+
+    cloud "Internet" as Internet {
+        database "github.com" as VCServer
+        database "npmjs.com" as PackageServer
+        node "travis-ci.com" as CICDServer
+        actor "Producer" as Producer
+        actor "Consumer" as Consumer
+        interface "Ethernet" as Ethernet
+        VCServer -( Ethernet
+        CICDServer --( Ethernet
+        Ethernet )- PackageServer
+        Ethernet )-- Producer
+        Ethernet )-- Consumer
+    }
+@enduml

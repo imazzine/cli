@@ -1,0 +1,57 @@
+@startuml services_graph
+
+    title Deployment Base Services Graph
+
+    node "github.com" as github {
+        database "Git Repository" as GitRepo [[https://github.com/imazzine/cli/tree/0.0.0]]
+        node "Git Server" as GitServer
+        GitRepo <- GitServer: store
+    }
+    interface "Webhooks" as Webhooks [[https://developer.github.com/webhooks/]]
+    interface "Rest API" as GitRestApi [[https://developer.github.com/v3/]]
+    GitServer -- Webhooks
+    GitServer -- GitRestApi
+    
+    node "npmjs.com" as npmjs {
+        node "Npm Server" as NpmService
+        database "Npm Package" as NpmPackage [[https://www.npmjs.com/package/@imazzine/cli/v/0.0.0]]
+        NpmService -> NpmPackage: store
+    }
+    interface "Npm Interface" as NpmInterface [[https://docs.npmjs.com/]]
+    NpmService -- NpmInterface
+
+    node "travis-ci.com" as CiCdServer {
+        node "CI/CD Service" as CiCdService [[https://travis-ci.com/imazzine/cli]]
+    }
+    interface "Travis API" as CiCdInterface [[https://docs.travis-ci.com/user/languages/javascript-with-nodejs/]]
+    CiCdService -- CiCdInterface
+    Webhooks )-- CiCdService
+    GitRestApi )- CiCdService
+    CiCdService --( NpmInterface
+    
+    node "Producer" as Producer {
+        node "GIT Client" as GitClient [[https://git-scm.com/downloads]]
+        interface "GIT CLI" as GitCli [[https://git-scm.com/book/en/v2/Getting-Started-The-Command-Line]]
+        GitClient -- GitCli
+
+        file "Source files" as Sources [[https://github.com/imazzine/cli/tree/0.0.0]]
+        file ".travis.yml" as CiCdConf [[https://github.com/imazzine/cli/blob/0.0.0/.travis.yml]]
+        file "package.json" as NpmConfig [[https://github.com/imazzine/cli/blob/0.0.0/package.json]]
+        GitRepo "0..*" o-- Sources
+        Sources *-- CiCdConf
+        Sources *-- NpmConfig
+        GitRestApi )-- GitClient
+        CiCdInterface )-- CiCdConf
+        NpmInterface )-- NpmConfig
+    }
+
+    node "Consumer" as Consumer {
+        node "NPM Client" as NpmClient [[https://www.npmjs.com/get-npm]]
+        interface "NPM CLI" as BIN [[https://docs.npmjs.com/cli-documentation/]]
+        NpmInterface )-- NpmClient
+        NpmClient -- BIN
+        file "Binaries" as Binaries
+        NpmPackage "0..*" o-- Binaries
+        NpmClient -> Binaries: install
+    }
+@enduml

@@ -15,7 +15,7 @@ You should install `@imazzine/cli` globally to make it works as a common CLI com
 
 # Design
 
-![Index schema](https://imazzine.github.io/cli/svg/index/index.svg)
+![Index schema](https://imazzine.github.io/cli/svg/index/index.svg)(https://imazzine.github.io/cli/svg/index/index.svg)
 
 # Opened questions / TODOs
 

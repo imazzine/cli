@@ -16,9 +16,9 @@ deploy:
     on:
       tags: true
   - provider: pages
-    skip_cleanup: true
-    local_dir: design/svg
-    keep_history: true
+    skip_cleanup: false
+    local_dir: ./design/svg
+    keep_history: false
     github_token: $GITHUB_TOKEN
     on:
       branch: master

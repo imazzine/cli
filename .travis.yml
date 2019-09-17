@@ -9,9 +9,16 @@ install:
 script:
   - npm run build
 deploy:
-  skip_cleanup: true
-  provider: npm
-  email: imazzine.development.kit@gmail.com
-  api_key: $NPM_TOKEN
-  on:
-    tags: true
+  - provider: npm
+    skip_cleanup: true
+    email: imazzine.development.kit@gmail.com
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
+  - provider: pages
+    skip_cleanup: true
+    local_dir: ./design/svg
+    keep_history: true
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: master

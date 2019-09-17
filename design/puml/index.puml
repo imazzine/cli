@@ -3,5 +3,6 @@ title Table of content
 object "Deployment" as Deployment {
     +[[./../deployment/nodes_graph/nodes_graph.svg Nodes Graph]]
     +[[./../deployment/services_graph/services_graph.svg Services Graph]]
+    -test
 }
 @enduml

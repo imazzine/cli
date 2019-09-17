@@ -16,6 +16,6 @@
         "node": ">=10.0.0"
     },
     "scripts": {
-        "build": "mkdir -p ./docs/svg && cp -r ./design/svg ./docs/svg && echo 'build done'"
+        "build": "mkdir -p ./docs/svg && cp -r ./design/svg ./docs/svg && cd ./docs && ls -la && echo 'build done'"
     }
 }

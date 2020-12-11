@@ -17,7 +17,6 @@ deploy:
       tags: true
   - provider: pages
     skip_cleanup: true
-    local_dir: ./design/svg
     keep_history: true
     github_token: $GITHUB_TOKEN
     on:

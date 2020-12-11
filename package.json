@@ -1,21 +1,25 @@
 {
-    "name": "@imazzine/cli",
-    "version": "0.0.0",
-    "license": "Apache-2.0",
-    "author": {
-        "name": "Artem Lytvynov",
-        "email": "buntarb@gmail.com"
-    },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "access": "public"
-    },
-    "devDependencies": {},
-    "dependencies": {},
-    "engines": {
-        "node": ">=10.0.0"
-    },
-    "scripts": {
-        "build": "mkdir -p ./docs/svg && cp -r ./design/svg ./docs/svg && cd ./docs && ls -la && echo 'build done'"
-    }
+  "name": "@imazzine/cli",
+  "version": "0.0.0-alpha.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Artem Lytvynov",
+    "email": "buntarb@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "type": "module",
+  "preferGlobal": true,
+  "bin": {
+    "zz": "./cli.js"
+  },
+  "dependencies": {
+    "commander": "^6.2.0",
+    "dotenv": "^8.2.0"
+  }
 }

@@ -5,25 +5,47 @@
  */
 
 import { program } from 'commander';
-import assertNodeJS from './asserts/node.js';
-import assertEnvironment from './asserts/environment.js';
-import paths from './helpers/paths.js';
-import resolveDefault from './helpers/resolveCliPath.js';
-import resolvePackageJson from './helpers/resolvePackageJson.js';
-
-function assert() {
-  assertNodeJS();
-  assertEnvironment();
-}
+import { readFileSync } from 'fs';
+import assertNodejsVersion from './asserts/nodejsVersion.js';
+import getEnvironment from './helpers/getEnvironment.js';
 
 export default async function() {
-  assert();
-  program
-    .version(resolvePackageJson(paths.default.packageJson).version);
-  if (process.env.ENV_PATH === paths.default.base) {
-    await import(resolveDefault(process.env.CMD_ADD));
-    await import(resolveDefault(process.env.CMD_LIST));
-    await import(resolveDefault(process.env.CMD_REMOVE));
-    program.parse(process.argv);
+
+  // Asserting stuff:
+  assertNodejsVersion();
+
+  // Loading environment:
+  getEnvironment();
+
+  // Configuring cli version:
+  program.version(
+    JSON.parse(readFileSync(process.env['ZZ_PATHS_CLI_PACKAGE_JSON'])).version
+  );
+
+  // Configuring basic cli commands:
+  const add = await import(process.env['ZZ_PATHS_CLI_COMMAND_ADD']);
+  const remove = await import(process.env['ZZ_PATHS_CLI_COMMAND_REMOVE']);
+  add.default(program);
+  remove.default(program);
+
+  // Getting list of commands and projects from process.env:
+  const commands = Object.keys(process.env).filter((key) => {
+    return key.indexOf('ZZ_COMMAND_') === 0
+  });
+  
+  // Configuring dynamic commands:
+  let cmd;
+  for(let i = 0; i < commands.length; i++) {
+    cmd = await import(process.env[commands[i]]);
+    if (cmd && cmd.default && typeof cmd.default === 'function') {
+      cmd.default(program);
+    } else {
+      console.warn(`Warning: registered command <${
+        commands[i].split('ZZ_COMMAND_')[1]
+      }> doesn't match @imazzine/cli command's API - ignored.`);
+    }
   }
+
+  // Executing cli command:
+  program.parse(process.argv);
 };

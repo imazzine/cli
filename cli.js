@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * @fileoverview CLI execurable.
+ * @fileoverview CLI executable.
  * @author Artem Lytvynov
  * @license Apache-2.0
  */

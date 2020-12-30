@@ -5,34 +5,59 @@
  */
 
 import * as fs from 'fs';
-import { program } from 'commander';
-import paths from './../helpers/paths.js';
-program
-  .command('add <subject>')
-  .description(
-    'Add specified <subject>, either "command" or "project".'
-  )
-  .storeOptionsAsProperties(false)
-  .requiredOption('-n, --name <val>', 'specified <subject>\'s name value')
-  .requiredOption('-p, --path <val>', 'specified <subject>\'s path value')
-  .action((subject, command) => {
-    const name = `CMD_${command.opts().name.toUpperCase()}`;
-    if (subject === 'command' && !process.env[name]) {
+import * as path from 'path';
+import assertModulePath from './../asserts/modulePath.js';
+export default function(program) {
+
+  program
+    .command('add <subject>')
+    .description(
+      'add specified <subject> (either "command" or "project") ' +
+      'to @imazzine/cli'
+    )
+    .storeOptionsAsProperties(false)
+    .requiredOption('-n, --name <value>', '<subject>\'s name')
+    .requiredOption('-p, --path <value>', '<subject>\'s path')
+    .action((subject, command) => {
+
+      // Calculating fullname:
+      let fullname;
+      switch (subject) {
+        case 'command':
+          fullname = `ZZ_COMMAND_${command.opts().name}`;
+          break;
+        case 'project':
+          fullname = `ZZ_PROJECT_${command.opts().name}`;
+          break;
+        default:
+          // Asserting subject value:
+          throw new TypeError(`wrong <subject> value: "${
+            subject
+          }". Should be either "command" or "project".`);
+      }
+
+      // Asserting fullname accessibility:
+      if (process.env[fullname]) {
+        throw new Error(`can't add ${subject} '${
+          command.opts().name
+        }': ${
+          fullname
+        } is already registered.`);
+      }
+
+      // Asserting path:
+      const subjectPath = assertModulePath(command.opts().path);
+
+      // Updating .env file:
       fs.writeFileSync(
-        paths.default.dotenv,
+        process.env['ZZ_PATHS_CLI_DOT_ENV'],
         `${
-          fs.readFileSync(paths.default.dotenv)
+          fs.readFileSync(process.env['ZZ_PATHS_CLI_DOT_ENV'])
         }\n${
-          name
+          fullname
         }="${
-          command.opts().path
+          subjectPath
         }"`
       );
-    } else {
-      throw new Error(`Can't add command '${
-        command.opts().name
-      }': process.env.${
-        name
-      } is already registered.`);
-    }
-  });
+    });
+}

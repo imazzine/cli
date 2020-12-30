@@ -1,5 +1,5 @@
 /**
- * @fileoverview Assertion function to check Node.js version (v14+).
+ * @fileoverview Assert function to check Node.js version (should be v14+).
  * @author Artem Lytvynov
  * @license Apache-2.0
  */
@@ -11,6 +11,6 @@ export default function () {
       .split('.')[0]
       .split('v')[1]
   )) {
-    throw new Error(`Unsupported Node.js version: ${process.version}`);
+    throw new Error(`Unsupported Node.js version: ${process.version} < v14`);
   }
 }

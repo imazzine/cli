@@ -4,9 +4,10 @@
  * @license Apache-2.0
  */
 
+'use strict';
+
 import * as dotenv from 'dotenv';
 import getPaths from './getPaths.js';
-
 export default function () {
 
   // Loading paths:

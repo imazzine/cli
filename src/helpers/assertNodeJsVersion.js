@@ -4,6 +4,8 @@
  * @license Apache-2.0
  */
 
+'use strict';
+
 export default function () {
   if (process.version[0] !== 'v' || 14 > Number.parseInt(
     process.version

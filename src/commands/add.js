@@ -4,60 +4,26 @@
  * @license Apache-2.0
  */
 
-import * as fs from 'fs';
-import * as path from 'path';
-import assertModulePath from './../asserts/modulePath.js';
+'use strict';
+
+import getSubjectFullname from '../helpers/getSubjectFullname.js';
+import resovePath from '../helpers/resovePath.js';
+import assertCommandPath from '../helpers/assertCommandPath.js';
+import addToDotEnv from '../helpers/addToDotEnv.js';
 export default function(program) {
-
   program
-    .command('add <subject>')
+    .command('add <subject> <path>')
     .description(
-      'add specified <subject> (either "command" or "project") ' +
-      'to @imazzine/cli'
-    )
+      'add specified <subject> ' +
+      '(either "command" or "project") ' +
+      'to @imazzine/cli')
     .storeOptionsAsProperties(false)
-    .requiredOption('-n, --name <value>', '<subject>\'s name')
-    .requiredOption('-p, --path <value>', '<subject>\'s path')
-    .action((subject, command) => {
-
-      // Calculating fullname:
-      let fullname;
-      switch (subject) {
-        case 'command':
-          fullname = `ZZ_COMMAND_${command.opts().name}`;
-          break;
-        case 'project':
-          fullname = `ZZ_PROJECT_${command.opts().name}`;
-          break;
-        default:
-          // Asserting subject value:
-          throw new TypeError(`wrong <subject> value: "${
-            subject
-          }". Should be either "command" or "project".`);
+    .action((subject, path, command) => {
+      const fullname = getSubjectFullname(subject);
+      const subjectPath = resovePath(path);
+      if (subject === 'command') {
+        assertCommandPath(subjectPath);
       }
-
-      // Asserting fullname accessibility:
-      if (process.env[fullname]) {
-        throw new Error(`can't add ${subject} '${
-          command.opts().name
-        }': ${
-          fullname
-        } is already registered.`);
-      }
-
-      // Asserting path:
-      const subjectPath = assertModulePath(command.opts().path);
-
-      // Updating .env file:
-      fs.writeFileSync(
-        process.env['ZZ_PATHS_CLI_DOT_ENV'],
-        `${
-          fs.readFileSync(process.env['ZZ_PATHS_CLI_DOT_ENV'])
-        }\n${
-          fullname
-        }="${
-          subjectPath
-        }"`
-      );
+      addToDotEnv(fullname, subjectPath);
     });
 }

@@ -4,22 +4,27 @@
  * @license Apache-2.0
  */
 
+'use strict';
+
 import { program } from 'commander';
 import { readFileSync } from 'fs';
-import assertNodejsVersion from './asserts/nodejsVersion.js';
+import assertNodeJsVersion from './helpers/assertNodeJsVersion.js';
 import getEnvironment from './helpers/getEnvironment.js';
-
 export default async function() {
 
   // Asserting stuff:
-  assertNodejsVersion();
+  assertNodeJsVersion();
 
   // Loading environment:
   getEnvironment();
 
   // Configuring cli version:
   program.version(
-    JSON.parse(readFileSync(process.env['ZZ_PATHS_CLI_PACKAGE_JSON'])).version
+    JSON.parse(
+      readFileSync(
+        process.env['ZZ_PATHS_CLI_PACKAGE_JSON']
+      )
+    ).version
   );
 
   // Configuring basic cli commands:

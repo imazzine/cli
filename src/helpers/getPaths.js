@@ -8,7 +8,6 @@
 
 import resolveCliPath from './resolveCliPath.js';
 import resolveProject from './resolveProjectPath.js';
-
 export default function() {
   return {
     cli: {

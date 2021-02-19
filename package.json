@@ -20,6 +20,8 @@
   },
   "dependencies": {
     "commander": "^6.2.0",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "uuid": "^8.3.2",
+    "resolve-global": "^1.0.0"
   }
 }

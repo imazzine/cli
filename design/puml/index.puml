@@ -1,9 +1,10 @@
 @startuml index
 title Table of content
-object "Deployment" as Deployment {
-    +[[./../deployment/nodes_graph/nodes_graph.svg Nodes Graph]]
-    +[[./../deployment/services_graph/services_graph.svg Services Graph]]
-    -test
-    -test(): void
+object "./deployment" as deployment {
+    +[[./../deployment/nodes_graph.svg Nodes Graph]]
+    +[[./../deployment/services_graph.svg Services Graph]]
+}
+object "./cli" as cli {
+    +[[./../cli/deployment_graph.svg Deployment Graph]]
 }
 @enduml

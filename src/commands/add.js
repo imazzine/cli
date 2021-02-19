@@ -8,7 +8,7 @@
 
 import getSubjectFullname from '../helpers/getSubjectFullname.js';
 import resovePath from '../helpers/resovePath.js';
-import assertCommandPath from '../helpers/assertCommandPath.js';
+import resolveCommandPath from '../helpers/resolveCommandPath.js';
 import addToDotEnv from '../helpers/addToDotEnv.js';
 export default function(program) {
   program
@@ -22,7 +22,7 @@ export default function(program) {
       const fullname = getSubjectFullname(subject);
       const subjectPath = resovePath(path);
       if (subject === 'command') {
-        assertCommandPath(subjectPath);
+        resolveCommandPath(subjectPath);
       }
       addToDotEnv(fullname, subjectPath);
     });

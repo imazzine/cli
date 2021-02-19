@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="75px" preserveAspectRatio="none" style="width:222px;height:75px;" version="1.1" viewBox="0 0 222 75" width="222px" zoomAndPan="magnify"><defs><filter height="300%" id="finar0ohr1fz9" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="213" x="2" y="16.708">IDK Command Interface</text><rect fill="#FEFECE" filter="url(#finar0ohr1fz9)" height="33.9688" style="stroke:#A80036;stroke-width:1.5;" width="54" x="81.5" y="27.9531"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="40" x="88.5" y="41.0918">export</text><line style="stroke:#A80036;stroke-width:1.5;" x1="82.5" x2="134.5" y1="45.9219" y2="45.9219"/><!--MD5=[84c5a3b8bd5841a536aef708cf7feb59]
+@startuml IDKCommandInterface
+    title IDK Command Interface
+
+    object export {
+        +help(): <void>
+        +execute(argv: <Array<string>>): <void>
+    }
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 12:25:05 EET 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg>

@@ -7,12 +7,15 @@
 'use strict';
 
 export default function () {
-  if (process.version[0] !== 'v' || 14 > Number.parseInt(
-    process.version
-      .toLocaleLowerCase()
-      .split('.')[0]
-      .split('v')[1]
-  )) {
-    throw new Error(`Unsupported Node.js version: ${process.version} < v14`);
+  if (process.version[0] !== 'v' ||
+    Number.parseInt(
+      process.version
+        .toLocaleLowerCase()
+        .split('.')[0]
+        .split('v')[1]
+    ) < 14 ||
+    process.version.split('.').length !== 3
+  ) {
+    throw new Error(`Unsupported Node.js version: ${process.version}`);
   }
 }

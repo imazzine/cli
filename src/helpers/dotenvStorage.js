@@ -56,7 +56,7 @@ function removeGlobally(subject, path) {
     if (entry.length
       && entry.split('=').length === 2
       && ~entry.split('=')[0]
-        .indexOf(subject === 'command' ? 'ZZ_COMMAND_' : 'ZZ_PROJECT')
+        .indexOf(subject === 'command' ? 'ZZ_COMMAND_' : 'ZZ_PROJECT_')
       && ~entry.split('=')[1].indexOf(subjectPath)) {
       dotenvList.splice(index, 1);
       fs.writeFileSync(

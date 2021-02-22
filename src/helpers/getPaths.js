@@ -7,7 +7,7 @@
 'use strict';
 
 import resolveCliPath from './resolveCliPath.js';
-import resolveProject from './resolveProjectPath.js';
+import resolveProjectPath from './resolveProjectPath.js';
 export default function() {
   return {
     cli: {
@@ -18,16 +18,16 @@ export default function() {
       COMMAND_REMOVE: resolveCliPath('./src/commands/remove.js'),
     },
     project: {
-      BASE: resolveProject('.'),
-      SRC: resolveProject('src'),
-      DIST: resolveProject('dist'),
-      PUBLIC: resolveProject('public'),
-      DOC: resolveProject('doc'),
-      COVERAGE: resolveProject('coverage'),
-      NODE_MODULES: resolveProject('node_modules'),
-      DOT_ENV: resolveProject('.env'),
-      PACKAGE_JSON: resolveProject('package.json'),
-      TSCONFIG_JSON: resolveProject('tsconfig.json'),
+      BASE: resolveProjectPath('.'),
+      SRC: resolveProjectPath('src'),
+      DIST: resolveProjectPath('dist'),
+      PUBLIC: resolveProjectPath('public'),
+      DOC: resolveProjectPath('doc'),
+      COVERAGE: resolveProjectPath('coverage'),
+      NODE_MODULES: resolveProjectPath('node_modules'),
+      DOT_ENV: resolveProjectPath('.env'),
+      PACKAGE_JSON: resolveProjectPath('package.json'),
+      TSCONFIG_JSON: resolveProjectPath('tsconfig.json'),
     }
   }
 };

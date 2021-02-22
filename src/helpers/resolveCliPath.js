@@ -11,6 +11,6 @@ import * as path from 'path';
 export default function(pth) {
   return path.resolve(
     path.dirname(url.fileURLToPath(import.meta.url)),
-    `./../../${pth}`
+    `./../../${pth || ''}`
   );
 }

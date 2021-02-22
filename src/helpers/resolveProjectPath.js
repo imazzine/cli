@@ -9,5 +9,5 @@
 import * as fs from 'fs';
 import * as path from 'path';
 export default function(pth) {
-  return path.resolve(fs.realpathSync(process.cwd()), pth);
+  return path.resolve(fs.realpathSync(process.cwd()), `./${pth || ''}`);
 }

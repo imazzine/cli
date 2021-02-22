@@ -6,10 +6,7 @@
 
 'use strict';
 
-import getSubjectFullname from '../helpers/getSubjectFullname.js';
-import resovePath from '../helpers/resovePath.js';
-import assertCommandPath from '../helpers/assertCommandPath.js';
-import addToDotEnv from '../helpers/addToDotEnv.js';
+import { addGlobally } from '../helpers/dotenvStorage.js';
 export default function(program) {
   program
     .command('add <subject> <path>')
@@ -18,12 +15,7 @@ export default function(program) {
       '(either "command" or "project") ' +
       'to @imazzine/cli')
     .storeOptionsAsProperties(false)
-    .action((subject, path, command) => {
-      const fullname = getSubjectFullname(subject);
-      const subjectPath = resovePath(path);
-      if (subject === 'command') {
-        assertCommandPath(subjectPath);
-      }
-      addToDotEnv(fullname, subjectPath);
+    .action((subject, path) => {
+      addGlobally(subject, path);
     });
 }

@@ -17,7 +17,7 @@ export default function(subject) {
       fullname = `ZZ_PROJECT_${uuid.v5(uuid.v1(), uuid.v1())}`;
       break;
     default:
-      throw new TypeError(
+      throw new Error(
         `Wrong <subject> value: "${
           subject
         }". Should be either "command" or "project".`

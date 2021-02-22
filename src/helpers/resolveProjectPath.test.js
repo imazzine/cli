@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 import fs from 'fs';
 import resolveProjectPath from './resolveProjectPath';
 let root;

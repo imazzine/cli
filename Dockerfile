@@ -10,6 +10,7 @@ RUN apk add --no-cache bash git openssh
 # Copy source, install dependencies, configure environment.
 COPY . .
 RUN npm i -g @imazzine/cli
+RUN npm i -g @imazzine/tmp
 RUN npm i
 RUN rm -rf $(npm root --global)/@imazzine/cli
 RUN ln -s . $(npm root --global)/@imazzine/cli

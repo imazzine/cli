@@ -1,5 +1,5 @@
 import { jest } from '@jest/globals';
-import assertNodeJsVersion from './assertNodeJsVersion';
+import assertNodeJsVersion from './assertNodeJsVersion.js';
 let original;
 describe('assert node.js version',  ()=>{
   beforeAll(()=>{

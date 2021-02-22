@@ -1,7 +1,6 @@
-import resolveProjectPath from './resolveProjectPath';
-import getEnvironment from './getEnvironment';
-import assertCommandPath from './assertCommandPath';
-import addToDotenv from './addToDotEnv';
+import resolveProjectPath from './resolveProjectPath.js';
+import getEnvironment from './getEnvironment.js';
+import assertCommandPath from './assertCommandPath.js';
 describe('assert @imazzine/cli command path assert function',  ()=>{
   beforeAll(()=>{
     getEnvironment();

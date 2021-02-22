@@ -1,5 +1,5 @@
 import fs from 'fs';
-import resolveProjectPath from './resolveProjectPath';
+import resolveProjectPath from './resolveProjectPath.js';
 let root;
 describe('assert @imazzine/cli project path resolver',  ()=>{
   beforeAll(()=>{

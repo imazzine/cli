@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import resolveCliPath from './resolveCliPath';
+import resolveCliPath from './resolveCliPath.js';
 let root;
 describe('assert @imazzine/cli cli path resolver',  ()=>{
   beforeAll(()=>{

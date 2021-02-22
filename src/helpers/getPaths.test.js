@@ -1,4 +1,4 @@
-import getPaths from './getPaths';
+import getPaths from './getPaths.js';
 import resolveCliPath from './resolveCliPath.js';
 import resolveProjectPath from './resolveProjectPath.js';
 const paths = getPaths();

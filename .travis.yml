@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-  - "10"
-  - "11"
-  - "12"
+  - "14"
 cache: npm
 install:
+  - npm i -g @imazzine/cli
+  - npm i -g @imazzine/tmp
   - npm i
 script:
-  - npm run build
+  - npm test
 deploy:
   - provider: npm
     skip_cleanup: true
@@ -15,9 +15,9 @@ deploy:
     api_key: $NPM_TOKEN
     on:
       tags: true
-  - provider: pages
-    skip_cleanup: true
-    keep_history: true
-    github_token: $GITHUB_TOKEN
-    on:
-      branch: master
+  # - provider: pages
+  #   skip_cleanup: true
+  #   keep_history: true
+  #   github_token: $GITHUB_TOKEN
+  #   on:
+  #     branch: master

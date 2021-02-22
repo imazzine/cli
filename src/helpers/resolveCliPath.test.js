@@ -1,7 +1,7 @@
 import { execSync } from 'child_process';
 import resolveCliPath from './resolveCliPath';
 let root;
-describe('assert @imazzine/cli path resolver',  ()=>{
+describe('assert @imazzine/cli cli path resolver',  ()=>{
   beforeAll(()=>{
     root = execSync('npm root')
       .toString()

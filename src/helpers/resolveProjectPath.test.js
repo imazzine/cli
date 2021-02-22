@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import resolveProjectPath from './resolveProjectPath';
 let root;
-describe('assert @imazzine/cli path resolver',  ()=>{
+describe('assert @imazzine/cli project path resolver',  ()=>{
   beforeAll(()=>{
     root = fs.realpathSync(process.cwd());
   });

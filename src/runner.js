@@ -27,11 +27,9 @@ export default async function() {
     ).version
   );
 
-  // Configuring basic cli commands:
-  const add = await import(process.env['ZZ_PATHS_CLI_COMMAND_ADD']);
-  const remove = await import(process.env['ZZ_PATHS_CLI_COMMAND_REMOVE']);
-  add.default(program);
-  remove.default(program);
+  // Configuring add/remove cli commands:
+  (await import(process.env['ZZ_PATHS_CLI_COMMAND_ADD'])).default(program);
+  (await import(process.env['ZZ_PATHS_CLI_COMMAND_REMOVE'])).default(program);
 
   // Getting list of commands and projects from process.env:
   const commands = Object.keys(process.env).filter((key) => {

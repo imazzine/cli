@@ -24,11 +24,9 @@ export default function () {
   });
 
   // Loading .env variables:
-  if (process.env['ZZ_PATHS_PROJECT_DOT_ENV']) {
-    dotenv.config({
-      path: process.env['ZZ_PATHS_PROJECT_DOT_ENV'],
-    });
-  }
+  dotenv.config({
+    path: process.env['ZZ_PATHS_PROJECT_DOT_ENV'],
+  });
   dotenv.config({
     path: process.env['ZZ_PATHS_CLI_DOT_ENV'],
   });

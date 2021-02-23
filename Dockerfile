@@ -3,6 +3,7 @@ FROM node:14-alpine3.10
 
 # Create app directory.
 WORKDIR /cli
+ADD ./coverage /cli/coverage
 
 # Add bash, git and openssh.
 RUN apk add --no-cache bash git openssh
@@ -18,4 +19,4 @@ RUN ln -s /cli/cli.js $(npm bin --global)/zz
 RUN mkdir /project
 
 # Run tests.
-CMD ["npm", "run", "test:ci"]
+CMD ["npm", "run", "test:lcov"]

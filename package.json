@@ -16,7 +16,8 @@
   "type": "module",
   "preferGlobal": true,
   "devDependencies": {
-    "jest": "^26.6.3"
+    "jest": "^26.6.3",
+    "coveralls": "^3.1.0"
   },
   "dependencies": {
     "commander": "^6.2.0",
@@ -25,7 +26,8 @@
     "resolve-global": "^1.0.0"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest"
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:ci": "node --experimental-vm-modules node_modules/.bin/jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "bin": {
     "zz": "./cli.js"

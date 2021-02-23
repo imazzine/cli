@@ -18,4 +18,4 @@ RUN ln -s /cli/cli.js $(npm bin --global)/zz
 RUN mkdir /project
 
 # Run tests.
-CMD ["npm", "test"]
+CMD ["npm", "run", "test:ci"]

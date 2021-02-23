@@ -4,9 +4,9 @@ services:
 before_install:
   - docker pull node:14-alpine3.10
 install:
-  - sudo docker build -t zz:cli-test .
+  - docker build -t zz:cli-test .
 script:
-  - sudo docker run -t zz:cli-test
+  - docker run -t zz:cli-test
 
 # language: node_js
 # node_js:

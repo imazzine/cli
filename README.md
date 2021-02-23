@@ -1,5 +1,5 @@
 # @imazzine/cli
-[![npm version](https://img.shields.io/npm/v/@imazzine/cli)](https://www.npmjs.com/package/@imazzine/cli) [![Build Status](https://travis-ci.com/imazzine/cli.svg?branch=master)](https://travis-ci.com/imazzine/cli)
+[![npm version](https://img.shields.io/npm/v/@imazzine/cli)](https://www.npmjs.com/package/@imazzine/cli) [![Build Status](https://travis-ci.com/imazzine/cli.svg?branch=master)](https://travis-ci.com/imazzine/cli)[![Coverage Status](https://coveralls.io/repos/github/imazzine/cli/badge.svg?branch=master)](https://coveralls.io/github/imazzine/cli?branch=master)
 
 ## About
 

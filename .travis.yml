@@ -1,23 +1,33 @@
 language: node_js
-node_js:
-  - "14"
-cache: npm
+services:
+  - docker
+before_install:
+  - docker pull node:14-alpine3.10
 install:
-  - npm i -g @imazzine/cli
-  - npm i -g @imazzine/tmp
-  - npm i
+  - sudo docker build -t zz:cli-test .
 script:
-  - npm test
-deploy:
-  - provider: npm
-    skip_cleanup: true
-    email: imazzine.development.kit@gmail.com
-    api_key: $NPM_TOKEN
-    on:
-      tags: true
-  # - provider: pages
-  #   skip_cleanup: true
-  #   keep_history: true
-  #   github_token: $GITHUB_TOKEN
-  #   on:
-  #     branch: master
+  - sudo docker run -t zz:cli-test
+
+# language: node_js
+# node_js:
+#   - "14"
+# cache: npm
+# install:
+#   - npm i -g @imazzine/cli
+#   - npm i -g @imazzine/tmp
+#   - npm i
+# script:
+#   - npm test
+# deploy:
+#   - provider: npm
+#     skip_cleanup: true
+#     email: imazzine.development.kit@gmail.com
+#     api_key: $NPM_TOKEN
+#     on:
+#       tags: true
+#   - provider: pages
+#     skip_cleanup: true
+#     keep_history: true
+#     github_token: $GITHUB_TOKEN
+#     on:
+#       branch: master

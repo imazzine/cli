@@ -1,4 +1,5 @@
 /.vscode
 /coverage
+/design
 /node_modules
 npm-debug.log

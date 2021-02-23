@@ -1,13 +1,22 @@
+import {jest} from '@jest/globals';
+import process from 'process';
 import getEnvironment from './getEnvironment.js';
+import resovePath from './resovePath';
 import resolveCliPath from './resolveCliPath.js';
 import resolveProjectPath from './resolveProjectPath.js';
+
 describe('assert @imazzine/cli environment object',  ()=>{
   beforeAll(()=>{
+    const spy = jest.spyOn(process, 'cwd');
+    spy.mockReturnValue(
+      resovePath('@imazzine/tmp').split('/tmp.js')[0]
+    );
     getEnvironment();
   });
-  test('process.env should contain ZZ_CLI value', ()=>{
+  test('process.env should contain ZZ_CLI and ZZ_TMP value', ()=>{
     expect(process.env).toMatchObject({
       ZZ_CLI: 'ZZ_CLI',
+      ZZ_TMP: 'ZZ_TMP',
     });
   });
   test('process.env should contain cli paths', ()=>{

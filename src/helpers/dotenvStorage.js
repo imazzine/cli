@@ -9,7 +9,8 @@
 import * as fs from 'fs';
 import getSubjectFullname from '../helpers/getSubjectFullname.js';
 import resovePath from './resovePath.js';
-import assertCommandPath from '../helpers/assertCommandPath.js';
+import assertCommandPath from './assertCommandPath.js';
+import assertProjectPath from './assertProjectPath.js';
 function addGlobally(subject, path) {
   const fullpath = resovePath(path);
   switch (subject) {
@@ -17,6 +18,7 @@ function addGlobally(subject, path) {
       assertCommandPath(fullpath);
       break;
     case 'project':
+      assertProjectPath(fullpath);
       break;
     default:
       throw new Error(

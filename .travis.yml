@@ -27,7 +27,7 @@ before_deploy:
   - npm version $TRAVIS_TAG --no-git-tag-version
   - git add ./package.json ./package-lock.json
   - git commit -m "Bump version to $TRAVIS_TAG"
-  - git push origin master
+  - git push origin origin/master
 deploy:
   provider: npm
   email: $NPM_EMAIL

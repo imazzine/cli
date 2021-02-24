@@ -25,6 +25,7 @@ before_deploy:
   - git checkout $TRAVIS_BRANCH
   - git add ./package.json ./package-lock.json
   - git commit -m "Bump version to $TRAVIS_TAG"
+  - git remote set-url origin https://${GH_TOKEN}@github.com/imazzine/cli.git
   - git push origin $TRAVIS_BRANCH
 deploy:
   provider: npm

@@ -3,5 +3,6 @@
 /design
 /node_modules
 .gitignore
+.release.sh
 .travis.yml
 Dockerfile

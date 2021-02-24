@@ -12,6 +12,14 @@ install:
 script:
   - docker run -v "$(pwd)"/coverage:/cli/coverage -t zz:cli-test
   - ./node_modules/.bin/coveralls < ./coverage/lcov.info
+before_deploy:
+  - npm version $TRAVIS_TAG --no-git-tag-version
+  - git config user.email "$GIT_EMAIL"
+  - git config user.name "$GIT_NAME"
+  - git checkout master
+  - git add ./package.json ./package-lock.json
+  - git commit -m "Bump version to $TRAVIS_TAG"
+  - git push origin master
 deploy:
   provider: npm
   email: $NPM_EMAIL
@@ -19,4 +27,3 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    all_branches: false

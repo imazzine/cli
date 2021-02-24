@@ -6,7 +6,7 @@
     title CLI Deployment Graph
     database "registry.npmjs.org" as npmRegister
     node "Host node" as hostNode #e8eaf6 {
-        component "NPM Client" as npmClient #c9ffc7
+        component "NPM Client" as npmClient [[https://www.npmjs.com/get-npm]] #c9ffc7
         interface "bin" as npmBinAPI [[https://docs.npmjs.com/files/package.json#bin]] #c9ffc7
         folder "NPM Global Packages" as npmGlobalPackages #f6ffc7 {
             package "@imazzine/cli" as cliPackage  #ffffff {
@@ -24,7 +24,7 @@
             cli -> env: use
         }
         interface "zz" as zzInterface #c9ffc7
-        component "Command Line Tool" as commandLineTool #e0e0e0
+        component "Command-Line Interpreter" as commandLineTool [[https://en.wikipedia.org/wiki/List_of_command-line_interpreters]] #e0e0e0
         npmRegister *-- cliPackage
         npmClient -- npmBinAPI
         cliPackage -- zzInterface
@@ -47,31 +47,39 @@
 
 @startjson cliPackageJson
 {
-    "name": "@imazzine/cli",
-    "version": "0.0.0-alpha.0",
-    "license": "Apache-2.0",
-    "author": {
-        "name": "Artem Lytvynov",
-        "email": "buntarb@gmail.com"
-    },
-    "publishConfig": {
-        "registry": "https://registry.npmjs.org/",
-        "access": "public"
-    },
-    "engines": {
-        "node": ">=14.0.0"
-    },
-    "type": "module",
-    "preferGlobal": true,
-    "bin": {
-        "zz": "./cli.js"
-    },
-    "dependencies": {
-        "commander": "^6.2.0",
-        "dotenv": "^8.2.0",
-        "uuid": "^8.3.2",
-        "resolve-global": "^1.0.0"
-    }
+  "name": "@imazzine/cli",
+  "version": "0.0.0-alpha.0",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Artem Lytvynov",
+    "email": "buntarb@gmail.com"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "type": "module",
+  "preferGlobal": true,
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "coveralls": "^3.1.0"
+  },
+  "dependencies": {
+    "commander": "^6.2.0",
+    "dotenv": "^8.2.0",
+    "uuid": "^8.3.2",
+    "resolve-global": "^1.0.0"
+  },
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:lcov": "node --experimental-vm-modules node_modules/.bin/jest --coverage"
+  },
+  "bin": {
+    "zz": "./cli.js"
+  }
 }
 @endjson
 
@@ -81,90 +89,6 @@
         component "commander" as CommanderComponent [[https://www.npmjs.com/package/commander]]
         interface "process" as process [[https://nodejs.org/dist/latest-v10.x/docs/api/process.html]] #ffc7fd
     }
-@enduml
-
-@startuml ConfigurationAPI
-    title Configuration API
-
-    object "package.json" as package.json {
-        +name: "@imazzine/idk"
-        +version: "0.0.0"
-        +bin: <Bin>
-        +idk: <Idk>
-        +dependencies: <Dependencies>
-    }
-
-    object "Dependencies" as Dependencies {
-        +commander: <string> <b>(2.20.0)</b>
-        +@imazzine/idk.help: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.version: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.commands: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.projects: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.list: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.lint: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.test: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.document: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.compile: <string> <b>(0.0.0)</b>
-        +@imazzine/idk.build: <string> <b>(0.0.0)</b>
-    }
-    package.json "1" *-- "1" Dependencies
-
-    object "Bin" as Bin {
-        +idk: <string> <b>("./idk.js")</b>
-    }
-    package.json "1" *-- "1" Bin
-
-    object "Idk" as Idk {
-        +commands: <Array<Command>>
-        +projects: <Array<Project>>
-    }
-    package.json "1" *-- "1" Idk
-
-    object "Command" as Command {
-        +path: <string>
-        +config: <Object>
-    }
-    Idk "1" o-- "0..*" Command
-
-    object "Project" as Project {
-        +path: <string>
-        +config: <Object>
-    }
-    Idk "1" o-- "0..*" Project
-@enduml
-
-
-
-@startuml IDKCommandInterface
-    title IDK Command Interface
-
-    object export {
-        +help(): <void>
-        +execute(argv: <Array<string>>): <void>
-    }
-@enduml
-
-@startuml Environment
-    title Process IDK Environment Interface
-
-    object "process.env.idk" as Idk {
-        +version: <string>
-        +commands: <Array<Command>>
-        +projects: <Array<Project>>
-        +current: <Project|boolean>
-    }
-
-    object "Command" as Command {
-        +path: <string>
-        +config: <Object>
-    }
-    Idk "1" o-- "0..*" Command
-
-    object "Project" as Project {
-        +path: <string>
-        +config: <Object>
-    }
-    Idk "1" o-- "0..*" Project
 @enduml
 
 @startuml IDKExecutor
@@ -231,143 +155,5 @@ package.idk.version) then (yes)
                     command.execute(process.argv)
                 });|
         endwhile
-    end
-@enduml
-
-@startuml HelpCommand
-    title Help Command
-
-    start
-        : [[./Environment.svg idk]] /
-        :const commands = idk.commands]
-        while (let i = 0; i < commands.length; i++)
-            :require
-                .ensure(commands[i].path)
-                .then((command)=>{
-                    command.help()
-                });|
-        endwhile
-    end
-@enduml
-
-@startuml VersionCommand
-    title Version Command
-
-    start
-        : [[./Environment.svg idk]] /
-        :idk.version/
-    end
-@enduml
-
-@startuml CommandsCommand
-    title Commands Command
-
-    start
-        : [[./Environment.svg idk]],\naction, package_path,\nconfig_action, config_key,\nconfig_value /
-        note right
-            <b>idk commands <action> <package_path> [config_action] [config_key] [config_value]</b>
-            
-            <b><action></b> Required. Specify action type over the [[./IDKCommandInterface.svg IDK Command Javascript Interface]] interface specified in <b><package_path></b> parameter:
-                
-                <b>add</b> - add specified interface to commands register;
-                <b>configure</b> - set/unset specified interface configuration parameter;
-                <b>remove</b> - remove specified interface from commands register;
-            
-            <b><package_path></b> Required. Globally installed NPM package name or absolute file path to the Javascript file with [[./IDKCommandInterface.svg IDK Command Javascript Interface]].
-            
-            <b>[config_action]</b> Required with <b>configure</b> <b><action></b>. Ignored for the rest of <b><action></b>s. Specify action over the configuration parameter specified in <b>[config_key]</b>.
-            Throw if <b>[config_key]</b> did not specified:
-                
-                <b>set</b> - set (or update if exist) parameter using <b>[config_value]</b> parameter as a value. Throw if <b>[config_value]</b> did not specified.
-                <b>unset</b> - remove <b>[config_key]</b> parameter from the register if exist. Do nothing otherwise.
-            
-            <b>[config_key]</b> Required for <b>configure</b> <b><action></b>. Ignored for the rest of <b><action></b>s. Specify configuration action parameter name.
-            
-            <b>[config_value]</b> Required for <b>configure</b> <b><action></b> with <b>set</b> <b>[config_action]</b>. Ignored for the rest of <b><action></b>s and <b>[config_action]</b>s.
-        end note
-        if (action == "add") then (yes)
-            if (!package_path) then (yes)
-                :package_path required/
-                  stop
-            endif
-            :const cmd = await require
-                .ensure(package_path);]
-            if (!cmd || !cmd.help || !cmd.execute) then (yes)
-                :required module is not IDK
-                Command Javascript Interface/
-                stop
-            endif
-            while (let i = 0; i < idk.commands.length; i++)
-                if (idk.commands[i].path == package_path) then (yes)
-                    :specified command already registered/
-                    stop
-                endif
-            endwhile
-            :idk.commands.push({
-                path: package_path,
-                config: {}})|
-        elseif (action == "remove") then (yes)
-
-        elseif (action == "configure") then (yes)
-
-        else (no)
-
-        endif
-    end
-@enduml
-
-@startuml ProjectsCommand
-    title Projects Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml ListCommand
-    title List Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml LintCommand
-    title Lint Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml TestCommand
-    title Test Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml DocumentCommand
-    title Document Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml CompileCommand
-    title Compile Command
-
-    start
-        : [[./Environment.svg idk]] /
-    end
-@enduml
-
-@startuml BuildCommand
-    title Build Command
-
-    start
-        : [[./Environment.svg idk]] /
     end
 @enduml

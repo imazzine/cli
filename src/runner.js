@@ -43,9 +43,8 @@ export default async function() {
     if (cmd && cmd.default && typeof cmd.default === 'function') {
       cmd.default(program);
     } else {
-      console.warn(`Warning: registered command <${
-        commands[i].split('ZZ_COMMAND_')[1]
-      }> doesn't match @imazzine/cli command's API - ignored.`);
+      console.warn('Warning: path registered as a command doesn\'t match ' +
+       `@imazzine/cli command's API. Ignored: ${process.env[commands[i]]}`);
     }
   }
 

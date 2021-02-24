@@ -12,3 +12,11 @@ install:
 script:
   - docker run -v "$(pwd)"/coverage:/cli/coverage -t zz:cli-test
   - ./node_modules/.bin/coveralls < ./coverage/lcov.info
+deploy:
+  provider: npm
+  email: $NPM_EMAIL
+  api_key: $NPM_TOKEN
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: false

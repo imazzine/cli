@@ -1,2 +1,7 @@
 /.vscode
+/coverage
 /design
+/node_modules
+.gitignore
+.travis.yml
+Dockerfile

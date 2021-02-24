@@ -1,6 +1,12 @@
 language: node_js
 node_js:
   - "14"
+# to generate env.global.secure run:
+# travis login --com --github-token [https://github.com/settings/tokens]
+# travis encrypt --com GH_TOKEN="[https://github.com/settings/tokens]" -r imazzine/cli
+env:
+  global:
+    - secure: "k4p2WMwzCLQBZQwUX5ydPI8Ks7YuaSl+oj85784AnnBz+QKOSfwE+Cw+MRgbdoQo3Xg7aLo5aVRyjLCtwWQRZupij+hUhruw8cwFGVWCOBAikLyj9q9TOZL6/ZA8W3fVWWofpCFmnG1zQ7i/ls4XlzTm9zMuH/ioU4NniyQZkr2r7o5N/kEhJgNb/GMHpnynw16zeUVOnZ1qtVj41aY/sneS9XDVUBk8rDd4MrxR2muKHfLa/e+y2MREtHthVqALklh0R1S9daYg1c14t6tNQCH9pf96hsAFHSenMWDOOt+fPDBQjhSPBSFAEbK+BlXXmNCzmS1jARDqnAH2BpSjgGuB9qjOphJFsOauRKgww4yppoo0SIdTM+1KtvIWQExjxE27/sQvGyoJjkq8jICGhLNVoLpbrctB5v2b2CQPvL0sRbu21QMyL9B5MUpfl91+/OnkLhlQlDK+SgL7VtCzBy/VrvhcpCBJ1O26pJtp0FT/trMCI3eBL+9OCVeTvj1bqzRBnNnN3s4r62/haGZr1QnsIxrsKpIPCwwJpPSlT+FuXbtlQjY0Xvtf+RocOQP4q2xDNx64sZb+EM96IaHvNPU4Q8cuxyw6q+d4nN4y+JrvtrMX5b3+gcY59YcEIRPsSG8P2H3A7nREImRwTDuXGBQ4K8GdVURqbDui5rd3oyo="
 services:
   - docker
 before_install:

@@ -22,7 +22,7 @@ before_deploy:
   - git remote set-url origin https://${GH_TOKEN}@github.com/imazzine/cli.git
   - git config --global user.email "travis@travis-ci.org"
   - git config --global user.name "Travis CI"
-  - git fetch
+  - git fetch --depth=1 https://${GH_TOKEN}@github.com/imazzine/cli.git refs/heads/master:refs/remotes/origin/master
   - git checkout master
   - npm version $TRAVIS_TAG --no-git-tag-version
   - git add ./package.json ./package-lock.json

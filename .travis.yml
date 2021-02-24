@@ -14,17 +14,17 @@ script:
   - ./node_modules/.bin/coveralls < ./coverage/lcov.info
 before_deploy:
   - npm version $TRAVIS_TAG --no-git-tag-version
-  - git config user.email "travis@travis-ci.org"
-  - git config user.name "Travis CI"
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
   - git checkout $TRAVIS_BRANCH
   - git add ./package.json ./package-lock.json
   - git commit -m "Bump version to $TRAVIS_TAG"
-  - git push origin $TRAVIS_BRANCH 2>&1
-  - git push origin $TRAVIS_BRANCH --tags 2>&1
+  - git push origin $TRAVIS_BRANCH
 deploy:
   provider: npm
   email: $NPM_EMAIL
   api_key: $NPM_TOKEN
   skip_cleanup: true
   on:
-    tags: true
+    branch: master
+    # tags: true

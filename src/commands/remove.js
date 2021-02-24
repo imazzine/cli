@@ -17,7 +17,5 @@ export default function(program) {
       '(either "command" or "project") ' +
       'from @imazzine/cli')
     .storeOptionsAsProperties(false)
-    .action((subject, path) => {
-      removeGlobally(subject, path);
-    });
+    .action(removeGlobally);
 }

@@ -50,5 +50,10 @@ export default async function() {
   }
 
   // Executing cli command:
-  program.parse(process.argv);
+  try {
+    program.parse(process.argv);
+  } catch(err) {
+    console.error(err);
+    process.exit(1);
+  }
 };

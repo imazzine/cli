@@ -15,7 +15,5 @@ export default function(program) {
       '(either "command" or "project") ' +
       'to @imazzine/cli')
     .storeOptionsAsProperties(false)
-    .action((subject, path) => {
-      addGlobally(subject, path);
-    });
+    .action(addGlobally);
 }

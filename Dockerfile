@@ -15,7 +15,6 @@ RUN npm i
 RUN rm -rf $(npm root --global)/@imazzine/cli
 RUN ln -s . $(npm root --global)/@imazzine/cli
 RUN ln -s /cli/cli.js $(npm bin --global)/zz
-RUN mkdir /project
 
 # Run tests.
 CMD ["npm", "run", "test:lcov"]

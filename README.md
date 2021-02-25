@@ -26,3 +26,15 @@ or `yarn`:
 
 ## Usage
 
+```bash
+zz [options] [command]
+
+Options:
+  -V, --version            output the version number
+  -h, --help               display help for command
+
+Commands:
+  add <subject> <path>     add specified <subject> (either "command" or "project") to @imazzine/cli
+  remove <subject> <path>  remove specified <subject> (either "command" or "project") from @imazzine/cli
+  help [command]           display help for command
+```

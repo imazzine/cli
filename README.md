@@ -88,5 +88,5 @@ cmd tmp!
 To remove previously added command you need to run:
 
 ```
-zz remove command ~/zz-plugins/tmp.js
+$ zz remove command ~/zz-plugins/tmp.js
 ```

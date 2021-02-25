@@ -171,4 +171,4 @@ $ docker build -t zz:cli-test .
 $ docker run -v "$(pwd)"/coverage:/cli/coverage -t zz:cli-test
 ```
 
-In this case tests will be executed with the coverage report. And for both cases, coverage report will be available under `~/cli/coverage` directory.
+In this case tests will be executed with the coverage report. And for both cases with the coverage, report will be available under the `~/cli/coverage` directory.

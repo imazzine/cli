@@ -28,7 +28,7 @@ or `yarn`:
 
 As already was mentioned, `@imazzine/cli` uses [`commander.js`](https://github.com/tj/commander.js/blob/master/Readme.md) under the hood.
 
-Command, pluggable to the `@imazzine/cli` -- is a simple `JavaScript` module (in general just a simple `.js` file) which exports `default` (in terms of `ES6 Modules`) valid `JavaScript` function.
+Command, pluggable to the `@imazzine/cli` -- is a simple `JavaScript` module (in general just a simple `.js` file) which exports as `default` (in terms of `ES6 Modules`) valid `JavaScript` function.
 
 This function will be called with the single parameter -- `program`, which is an instance of [`commander.js program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface.
 

@@ -16,7 +16,7 @@ The core module of the `zz` command-line interface. It brings `zz add` and `zz r
 
 ## Installation
 
-`@imazzine/cli` designed as a globally installed utility. You can perform installation via `npm`:
+`@imazzine/cli` was designed as a globally installed utility. You can perform installation via `npm`:
 
 > `npm i -g @imazzine/cli`
 
@@ -26,7 +26,7 @@ or `yarn`:
 
 ## Usage
 
-```bash
+```
 zz [options] [command]
 
 Options:

@@ -24,7 +24,33 @@ or `yarn`:
 
 > `yarn global add @imazzine/cli`
 
+## Pluggable command interface
+
+As already was mentioned, `@imazzine/cli` uses [`commander.js`](https://github.com/tj/commander.js/blob/master/Readme.md) under the hood.
+
+Command, pluggable to the `@imazzine/cli` -- is a simple `JavaScript` module (in general just a simple `.js` file) which exports `default` (in terms of `ES6 Modules`) valid `JavaScript` function.
+
+This function will be called with the single parameter -- `program`, which is an instance of [`commander.js program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface.
+
+Internally this function should perform any operations with the [`program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface according to the official documentation to configure additional CLI commands.
+
+So, the simplest example could looks like this:
+
+```javascript
+// ~/zz-plugins/tmp.js
+export default function(program) {
+  program
+    .command('tmp')
+    .description('tmp')
+    .action((subject, command) => {
+      console.log('cmd tmp!');
+    });
+}
+```
+
 ## Usage
+
+After installation you can run `zz help` command in you terminal. It should return following output by default:
 
 ```
 zz [options] [command]
@@ -38,3 +64,9 @@ Commands:
   remove <subject> <path>  remove specified <subject> (either "command" or "project") from @imazzine/cli
   help [command]           display help for command
 ```
+
+To add `tmp` command from the example, you should run:
+
+> `zz add command ~/zz-plugins/tmp.js`
+
+`add` command will resolve absolute path, locally and globally installed node modules. So, your plugins could be distributed in a different ways.

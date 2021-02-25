@@ -90,3 +90,23 @@ To remove previously added command you need to run:
 ```
 $ zz remove command ~/zz-plugins/tmp.js
 ```
+
+## Contributing
+
+`@imazzine/cli` is mostly driven by the maintainers and definitely needed community contributions. Any contribution helps us keeping this project running.
+
+### Reporting Security Issues
+
+`@imazzine/cli` doesn't supposed to be web facing by it's design. However, any security issues are the top priority for us. Please contact us privately via `imazzine.development.kit@gmail.com` if you have any security concerns.
+
+### Reporting General Issues
+
+[Github issues](https://github.com/imazzine/cli/issues) looks like the right place for any general purpose issues. But, please, make sure that the issue you are reporting is strictly related to the `@imazzine/cli`.
+
+### Feature Requests
+
+If you want to propose new features to the `@imazzine/cli`, you need to clearly state new feature. Feature request should be added to the [Github issues](https://github.com/imazzine/cli/issues) and provide various examples, API suggestions and references to support idea behind it.
+
+### Bugs Fixes and New Features
+
+All contributions are accepted as a [PRs](https://github.com/imazzine/cli/pulls), ideally linked with the related [Github issues](https://github.com/imazzine/cli/issues).

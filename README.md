@@ -65,7 +65,7 @@ Commands:
   help [command]           display help for command
 ```
 
-To add `tmp` command from the example, you should run:
+To add `tmp` command from the example above, you should run:
 
 > `zz add command ~/zz-plugins/tmp.js`
 

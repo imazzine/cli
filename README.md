@@ -69,4 +69,4 @@ To add `tmp` command from the example above, you should run:
 
 > `zz add command ~/zz-plugins/tmp.js`
 
-`add` command will resolve absolute path, locally and globally installed node modules. So, your plugins could be distributed in a different ways.
+`zz add` command will resolve absolute path, locally and globally installed node modules. So, your plugins could be distributed in a different ways.

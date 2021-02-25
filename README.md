@@ -18,11 +18,15 @@ The core module of the `zz` command-line interface. It brings `zz add` and `zz r
 
 `@imazzine/cli` was designed as a globally installed utility. You can perform installation via `npm`:
 
-> `npm i -g @imazzine/cli`
+```
+$ npm i -g @imazzine/cli
+```
 
 or `yarn`:
 
-> `yarn global add @imazzine/cli`
+```
+$ yarn global add @imazzine/cli
+```
 
 ## Pluggable commands interface
 
@@ -67,6 +71,15 @@ Commands:
 
 To add `tmp` command from the example above, you should run:
 
-> `zz add command ~/zz-plugins/tmp.js`
+```
+$ zz add command ~/zz-plugins/tmp.js
+```
 
 `zz add` command will resolve absolute path, locally and globally installed node modules. So, your plugins could be distributed in a different ways.
+
+After your command was plugged-in, you are able to use it:
+
+```
+$ zz tmp
+cmd tmp!
+```

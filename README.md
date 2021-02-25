@@ -24,7 +24,7 @@ or `yarn`:
 
 > `yarn global add @imazzine/cli`
 
-## Pluggable command interface
+## Pluggable commands interface
 
 As already was mentioned, `@imazzine/cli` uses [`commander.js`](https://github.com/tj/commander.js/blob/master/Readme.md) under the hood.
 

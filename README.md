@@ -36,7 +36,7 @@ Command, pluggable to the `@imazzine/cli` -- is a simple `JavaScript` module (in
 
 This function will be called with the single parameter -- `program`, which is an instance of [`commander.js program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface.
 
-Internally this function should perform any operations with the [`program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface according to the official documentation to configure additional CLI commands.
+Internally your plugin could perform any operations with the [`program`](https://github.com/tj/commander.js/blob/master/Readme.md#declaring-program-variable) interface according to the official documentation to configure additional CLI commands.
 
 So, the simplest example could looks like this:
 

@@ -84,3 +84,9 @@ After your command was plugged-in, you are able to use it:
 $ zz tmp
 cmd tmp!
 ```
+
+To remove previously added command you need to run:
+
+```
+zz remove command ~/zz-plugins/tmp.js
+```

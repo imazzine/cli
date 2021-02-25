@@ -54,9 +54,10 @@ export default function(program) {
 
 ## Usage
 
-After installation you can run `zz help` command in you terminal. It should return following output by default:
+After installation you can run `zz help` command in you terminal.
 
 ```
+$ zz help
 zz [options] [command]
 
 Options:
@@ -75,7 +76,7 @@ To add `tmp` command from the example above, you should run:
 $ zz add command ~/zz-plugins/tmp.js
 ```
 
-`zz add` command will resolve absolute path, locally and globally installed node modules. So, your plugins could be distributed in a different ways.
+`zz add` command will resolve absolute path and locally and globally installed node modules. So, your plugins could be distributed in a different ways.
 
 After your command was plugged-in, you are able to use it:
 

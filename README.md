@@ -8,7 +8,7 @@
 
 The core module of the `zz` command-line interface. It brings `zz add` and `zz remove` commands to the terminal which allows you to plugged-in/out any other compatible command under `zz` namespace to build your custom CLI toolset.
 
-`@imazzine/cli` built with the `JavaScript` and uses the [`commander.js`](https://github.com/tj/commander.js/blob/master/Readme.md) API under the hood, which means that pluggable commands needs be implemented with the one of the most popular command-line interface solution for the node.js.
+`@imazzine/cli` built with the `JavaScript` and uses the [`commander.js`](https://github.com/tj/commander.js/blob/master/Readme.md) API under the hood, which means that pluggable commands needs to be implemented with the one of the most popular command-line interface solution for the node.js.
 
 ## Prerequisites
 

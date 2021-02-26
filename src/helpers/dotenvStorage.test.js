@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for dotenvStorage.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import * as fs from 'fs';
 import getEnvironment from './getEnvironment.js';
 import resovePath from './resovePath.js';

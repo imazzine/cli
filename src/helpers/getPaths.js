@@ -1,6 +1,7 @@
 /**
  * @fileoverview Function for determine calculated paths.
  * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
  * @license Apache-2.0
  */
 

@@ -1,6 +1,7 @@
 /**
- * @fileoverview Provides basic execution logic for CLI commands.
+ * @fileoverview Provides execution logic for CLI commands.
  * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
  * @license Apache-2.0
  */
 

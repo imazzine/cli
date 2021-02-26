@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for getPaths.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import getPaths from './getPaths.js';
 import resolveCliPath from './resolveCliPath.js';
 import resolveProjectPath from './resolveProjectPath.js';

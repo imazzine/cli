@@ -1,6 +1,7 @@
 /**
- * @fileoverview Configure "remove" command.
+ * @fileoverview "remove" command configuration.
  * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
  * @license Apache-2.0
  */
 

@@ -1,6 +1,7 @@
 /**
  * @fileoverview Set of functions for update imazzine .env files.
  * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
  * @license Apache-2.0
  */
 

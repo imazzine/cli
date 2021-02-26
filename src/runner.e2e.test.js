@@ -1,3 +1,12 @@
+/**
+ * @fileoverview E2E tests for execution logic of CLI commands.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import { execSync } from 'child_process';
 
 describe('e2e tests for @imazzine/cli',  ()=>{

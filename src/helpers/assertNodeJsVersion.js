@@ -1,6 +1,7 @@
 /**
- * @fileoverview Assert function to check Node.js version (should be v14+).
+ * @fileoverview Assert function to check Node.js version.
  * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
  * @license Apache-2.0
  */
 

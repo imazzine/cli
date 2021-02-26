@@ -1,5 +1,13 @@
+/**
+ * @fileoverview Unit tests for resovePath.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import { execSync } from 'child_process';
-import resolveProjectPath from './resolveProjectPath';
 import resolvePath from './resovePath';
 let globalRoot;
 let localRoot;

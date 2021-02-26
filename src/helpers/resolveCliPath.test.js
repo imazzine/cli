@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for resolveCliPath.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import { execSync } from 'child_process';
 import resolveCliPath from './resolveCliPath.js';
 let root;

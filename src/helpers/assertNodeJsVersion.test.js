@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for assertNodeJsVersion.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import { jest } from '@jest/globals';
 import assertNodeJsVersion from './assertNodeJsVersion.js';
 let original;

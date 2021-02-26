@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for assertProjectPath.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import resolveProjectPath from './resolveProjectPath.js';
 import getEnvironment from './getEnvironment.js';
 import assertProjectPath from './assertProjectPath.js';

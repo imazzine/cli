@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for getSubjectFullname.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import getSubjectFullname from './getSubjectFullname.js';
 describe('assert getSubjectFullname function',  ()=>{
   test('test "command" subject', ()=>{

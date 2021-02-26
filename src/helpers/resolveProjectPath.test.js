@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for resolveProjectPath.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import fs from 'fs';
 import resolveProjectPath from './resolveProjectPath.js';
 let root;

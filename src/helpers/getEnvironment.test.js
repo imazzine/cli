@@ -1,3 +1,12 @@
+/**
+ * @fileoverview Unit tests for getEnvironment.
+ * @author Artem Lytvynov
+ * @copyright Artem Lytvynov
+ * @license Apache-2.0
+ */
+
+'use strict';
+
 import {jest} from '@jest/globals';
 import process from 'process';
 import getEnvironment from './getEnvironment.js';

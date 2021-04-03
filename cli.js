@@ -7,5 +7,5 @@
  * @license Apache-2.0
  */
 
-import run from './src/runner.js';
+const run = require('./lib/runner.js').default;
 run();

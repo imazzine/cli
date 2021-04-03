@@ -17,7 +17,12 @@ function getConfig() {
     runner: './src/runner.ts',
   };
   const exclude = [/\.test\.js$/, /(node_modules)/];
-  const externals = [];
+  const externals = [
+    'os',
+    'fs',
+    'path',
+    'module',
+  ];
   const output = {
     path: path.resolve('./lib'),
     filename: '[name].js',
@@ -41,13 +46,16 @@ function getConfig() {
   const config = {
     entry: entry,
     resolve: {
-      extensions: ['.ts'],
+      extensions: [
+        '.ts',
+        '.js',
+      ],
     },
     output: output,
     externals: externals,
+    mode: 'production', // development | production
     devtool: 'source-map',
     module: params,
-    mode: 'production', // development | production
     optimization: {
       minimizer: [
         new Terser({

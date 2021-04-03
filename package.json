@@ -47,6 +47,6 @@
     "build": "webpack --config webpack.config.js"
   },
   "bin": {
-    "zz": "./cli.js"
+    "zz": "node --experimental-vm-modules ./cli.js"
   }
 }

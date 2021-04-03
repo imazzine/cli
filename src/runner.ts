@@ -5,7 +5,10 @@
  * @license Apache-2.0
  */
 
-export default function run(s): number {
-  console.log('!!!');
-  return s;
-};
+// import { program } from 'commander';
+// import { readFileSync } from 'fs';
+import resovePath from './helpers/resovePath';
+// export default function run() {
+//   console.log(resovePath('.'));
+// };
+console.log(resovePath('.'));

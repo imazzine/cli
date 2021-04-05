@@ -7,15 +7,18 @@
 
 'use strict';
 
+import * as resolve from 'resolve';
 import * as resolveGlobal from 'resolve-global';
-// import * as mod from 'module';
-// const resolveLocal = mod.createRequire(import.meta.url).resolve;
-const resolveLocal = require.resolve;
-function resovePath(path: string) {
+
+/**
+ * Resolve path to locally/globally installed npm
+ * module or file specified in path param.
+ * @throws
+ */
+function resovePath(path: string): string {
     let subjectPath = resolveGlobal.silent(path);
     if (!subjectPath) {
-        console.log('global');
-        subjectPath = resolveLocal(path);
+        subjectPath = resolve.sync(path);
     }
     return subjectPath;
 }

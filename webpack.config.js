@@ -22,6 +22,8 @@ function getConfig() {
     'fs',
     'path',
     'module',
+    'resolve',
+    'resolve-global',
   ];
   const output = {
     path: path.resolve('./lib'),
@@ -52,11 +54,13 @@ function getConfig() {
       ],
     },
     output: output,
+    target: 'node',
     externals: externals,
     mode: 'production', // development | production
     devtool: 'source-map',
     module: params,
     optimization: {
+      minimize: true,
       minimizer: [
         new Terser({
           // test: /\.js(\?.*)?$/i,
@@ -74,6 +78,7 @@ function getConfig() {
           },
           terserOptions: {
             module: false,
+            mangle: false,
             output: {
               comments: false,
             },

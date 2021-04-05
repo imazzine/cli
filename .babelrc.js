@@ -1,8 +1,6 @@
 module.exports = {
   plugins: [
-    [
-      '@babel/plugin-transform-runtime',
-    ],
+    [ '@babel/plugin-transform-runtime', ],
     [
       '@babel/plugin-transform-typescript',
       {
@@ -30,10 +28,10 @@ module.exports = {
         allExtensions: false,
         allowNamespaces: true,
         allowDeclareFields: false,
-        // isTSX: false,
-        // jsxPragma: 'React',
-        // jsxPragmaFrag: 'React.Fragment',
         onlyRemoveTypeImports: false,
+        isTSX: false,
+        jsxPragma: 'React',
+        jsxPragmaFrag: 'React.Fragment',
       },
     ],
   ],

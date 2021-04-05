@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "target": "esnext",
-    "module": "commonjs",
+    "target": "ES6",
+    "module": "UMD",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
 
     "noEmit": false,
     "declaration": true,

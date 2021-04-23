@@ -11,36 +11,48 @@ import { execSync } from 'child_process';
 import resolvePath from './resovePath';
 let globalRoot: string;
 let localRoot: string;
-describe('assert @imazzine/cli path resolver',  ()=>{
-  beforeAll(()=>{
+describe('assert @imazzine/cli path resolver', () => {
+  beforeAll(() => {
     globalRoot = execSync('npm root -g').toString().split('\n')[0];
-    localRoot = execSync('npm root').toString().split('\n')[0]
+    localRoot = execSync('npm root')
+      .toString()
+      .split('\n')[0]
       .split('/node_modules')[0];
   });
-  test('globally installed package should be resolved', ()=>{
-    expect(resolvePath('@imazzine/tmp'))
-      .toEqual(`${globalRoot}/@imazzine/tmp/tmp.js`);
+  test('globally installed package should be resolved', () => {
+    expect(resolvePath('@imazzine/tmp')).toEqual(
+      `${globalRoot}/@imazzine/tmp/tmp.js`,
+    );
   });
-  test('existed file path should be resolved', ()=>{
-    expect(resolvePath('../../.env'))
-      .toEqual(`${localRoot}/.env`);
+  test('existed file path should be resolved', () => {
+    expect(resolvePath('../../.env')).toEqual(`${localRoot}/.env`);
   });
-  test('existed directory path should throw', ()=>{
-    expect(()=>{resolvePath('/')}).toThrow();
+  test('existed directory path should throw', () => {
+    expect(() => {
+      resolvePath('/');
+    }).toThrow();
   });
-  test('existed file path (rel) shouldn\'t throw', ()=>{
-    expect(()=>{resolvePath('../../.env')}).not.toThrow();
+  test("existed file path (rel) shouldn't throw", () => {
+    expect(() => {
+      resolvePath('../../.env');
+    }).not.toThrow();
   });
-  test('existed file path (abs) shouldn\'t throw', ()=>{
-    expect(()=>{resolvePath(`${localRoot}/.env`)}).not.toThrow();
+  test("existed file path (abs) shouldn't throw", () => {
+    expect(() => {
+      resolvePath(`${localRoot}/.env`);
+    }).not.toThrow();
   });
-  test('non existed file path (rel) should throw', ()=>{
-    expect(()=>{resolvePath('./.env')}).toThrow();
+  test('non existed file path (rel) should throw', () => {
+    expect(() => {
+      resolvePath('./.env');
+    }).toThrow();
   });
-  test('non existed file path (abs) should throw', ()=>{
-    expect(()=>{resolvePath(`${localRoot}/src/.env`)}).toThrow();
+  test('non existed file path (abs) should throw', () => {
+    expect(() => {
+      resolvePath(`${localRoot}/src/.env`);
+    }).toThrow();
   });
-  afterAll(()=>{
+  afterAll(() => {
     globalRoot = '';
     localRoot = '';
   });

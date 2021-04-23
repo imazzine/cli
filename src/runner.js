@@ -1,5 +1,6 @@
 /**
  * @fileoverview Provides execution logic for CLI commands.
+ * @module @imazzine/cli
  * @author Artem Lytvynov
  * @copyright Artem Lytvynov
  * @license Apache-2.0

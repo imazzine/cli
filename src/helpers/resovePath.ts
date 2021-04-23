@@ -13,13 +13,12 @@ import * as resolveGlobal from 'resolve-global';
 /**
  * Resolve path to locally/globally installed npm
  * module or file specified in path param.
- * @throws
  */
 function resovePath(path: string): string {
-    let subjectPath = resolveGlobal.silent(path);
-    if (!subjectPath) {
-        subjectPath = resolve.sync(path);
-    }
-    return subjectPath;
+  let subjectPath = resolveGlobal.silent(path);
+  if (!subjectPath) {
+    subjectPath = resolve.sync(path);
+  }
+  return subjectPath;
 }
 export default resovePath;

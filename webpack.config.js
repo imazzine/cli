@@ -1,6 +1,5 @@
 /**
- * @fileoverview Provides webpack configuration for the
- * module.
+ * @fileoverview Provides webpack configuration for the module.
  * @author Artem Lytvynov
  * @copyright Artem Lytvynov
  * @license Apache-2.0
@@ -17,14 +16,7 @@ function getConfig() {
     runner: './src/runner.ts',
   };
   const exclude = [/\.test\.js$/, /(node_modules)/];
-  const externals = [
-    'os',
-    'fs',
-    'path',
-    'module',
-    'resolve',
-    'resolve-global',
-  ];
+  const externals = ['os', 'fs', 'path', 'module', 'resolve', 'resolve-global'];
   const output = {
     path: path.resolve('./lib'),
     filename: '[name].js',
@@ -48,10 +40,7 @@ function getConfig() {
   const config = {
     entry: entry,
     resolve: {
-      extensions: [
-        '.ts',
-        '.js',
-      ],
+      extensions: ['.ts', '.js'],
     },
     output: output,
     target: 'node',
@@ -69,6 +58,7 @@ function getConfig() {
           // minify
           parallel: true,
           extractComments: {
+            condition: /@module/i,
             filename: (fileData) => {
               return `${fileData.filename}.info`;
             },
@@ -77,8 +67,8 @@ function getConfig() {
             },
           },
           terserOptions: {
-            module: false,
-            mangle: false,
+            module: false, // true for ES6 modules
+            mangle: false, // obfuscate
             output: {
               comments: false,
             },
